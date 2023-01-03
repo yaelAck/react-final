@@ -3,6 +3,8 @@ import './App.css';
 import ToDo from './components/ToDo';
 import { Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
+import  Header  from './components/Header';
+import LogIn from './components/Login';
 
 
 function App() {
@@ -11,11 +13,11 @@ function App() {
   <ToDo />
   <Header />
   <Routes>
-    <Route path="/logIn"></Route>
-    <Route path="/home" ></Route>
-    <Route path="/toDo" ></Route>
-    <Route path="/posts" ></Route>
-    <Route path="/albums" ></Route>
+    <Route path="/logIn" element={<LogIn />}></Route>
+    {/* <Route path="/home" element={<Home />}></Route> */}
+    <Route path="/toDo" element={<ToDo />}></Route>
+    {/* <Route path="/posts" element={<Posts />}></Route>
+    <Route path="/albums" element={<Albums />}></Route> */}
     <Route path="*"></Route>
   </Routes>
   </div>

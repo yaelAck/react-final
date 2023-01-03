@@ -1,22 +1,20 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import "../css/Header.css"
 
-export function Header() {
-
-
-
-
+function Header() {
     return (
-        <>
-            <h1> Hellow {location.state}</h1>
+        <div>
             <ul>
-                {/* <li><NavLink to={'/login'}>Login</NavLink></li> */}
-                <li><NavLink to={'/home'}>Home</NavLink></li>
-                <li><NavLink to={'/toDo'}>ToDo</NavLink></li>
-                <li><NavLink to={'/posts'}>Posts</NavLink></li>
-                <li><NavLink to={'/albums'}>Albums</NavLink></li>
+                <li className='header'><NavLink to={'/login'}>Login</NavLink></li>
+                <li className='header'><NavLink to={'/home'}>Home</NavLink></li>
+                <li className='header'><NavLink to={'/toDo'}>ToDo</NavLink></li>
+                <li className='header'><NavLink to={'/posts'}>Posts</NavLink></li>
+                <li className='header'><NavLink to={'/albums'}>Albums</NavLink></li>
 
             </ul>
-        </>
+        </div>
     )
 }
+
+export default Header;
