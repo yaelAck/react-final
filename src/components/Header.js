@@ -4,7 +4,7 @@ import "../css/Header.css"
 
 function Header() {
     return (
-        <>
+        <div>
             <ul>
                 <li className='header'><NavLink to={'/login'}>Login</NavLink></li>
                 <li className='header'><NavLink to={'/home'}>Home</NavLink></li>
@@ -13,7 +13,7 @@ function Header() {
                 <li className='header'><NavLink to={'/albums'}>Albums</NavLink></li>
 
             </ul>
-        </>
+        </div>
     )
 }
 
