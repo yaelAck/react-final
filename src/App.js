@@ -23,7 +23,6 @@ function App() {
         <Route path="/logout" element={<Logout />}></Route>
         <Route path="*"></Route>
       </Routes>
-      <ToDo />
     </div>
   );
 }
