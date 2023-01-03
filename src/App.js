@@ -2,14 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import ToDo from './components/ToDo';
 import { Route, Routes } from 'react-router-dom';
-import { Header } from './components/Header';
+import  Header  from './components/Header';
 import LogIn from './components/Login';
 
 
 function App() {
   return (
     <div>
-  <ToDo />
   <Header />
   <Routes>
     <Route path="/logIn" element={<LogIn />}></Route>

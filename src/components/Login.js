@@ -55,9 +55,6 @@ function LogIn() {
                 <input type="text" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">login</ button>
             </form>
-            {items.map(item => {
-                return <pre>{JSON.stringify(item)}</pre>
-            })}
         </div>
     )
 }
