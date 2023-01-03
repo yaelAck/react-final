@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useLocalStorage from './useLocalStorage';
 
-function App() {
+function LogIn() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [items, setItems] = useState([])
@@ -61,4 +61,4 @@ function App() {
         </div>
     )
 }
-export default App;
+export default LogIn;
