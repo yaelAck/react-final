@@ -3,28 +3,39 @@ import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import '../css/Album.css'
 
-
 function Album(props) {
   const [num, setNum] = useState(10);
-  let { id } = useParams();
+  let {id} = useParams();
   const albumPhotos = id * 50 - 49;
-  const [album, setAlbum] = useState([]);
+  const [album, setAlbum] = useState([]);  
+  
   useEffect(() => {
-    const arr = [];
-    async function data() {
-      for (let i = albumPhotos; i < albumPhotos + num; i++) {
-        const res = await fetch(
-          `https://jsonplaceholder.typicode.com/photos?id=${i}`
-        );
-        const serverData = await res.json();
-        arr.push(serverData[0])
+      const arr = [];
+      async function data() {
+        console.log(num)
+        for(let i = albumPhotos+num-10;i < albumPhotos + num; i++){
+          const res = await fetch(
+            `https://jsonplaceholder.typicode.com/photos?id=${i}`
+          );
+          const serverData = await res.json();
+            arr.push(serverData[0])
+        }
+        setAlbum(arr);
       }
-      setAlbum(arr);
-    }
-    data(id);
-    // return(()=>localStorage.setItem("currentUserAlbum", JSON.stringify(alb
-  }, [num, props.id]);
+      data(id);
+    },[props.id,num]);
+    
 
+    function updateNum(){
+      setNum((prev)=> {
+        if(prev === 50){
+          alert('you saw all the photos')
+        }else{
+         return prev + 10;
+        }
+      })
+    }
+ 
   function updateNum() {
     setNum((prev) => {
       if (prev < 50) {
@@ -48,6 +59,5 @@ function Album(props) {
       </div>
     </div>);
 }
-
 export default Album;
 
