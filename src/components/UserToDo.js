@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import React from 'react';
+import "../css/ToDo.css";
 
-export function userToDo(props) {
-
+function userToDo(props) {
+console.log(props.index)
   
     return (
         <li
           className="to-do-list"
-          key={index}
-          style={el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
-          <p>id: {el.id}</p>
-          {!el.completed ? (
+          key={props.index}
+          style={props.el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
+          <p>id: {props.el.id}</p>
+          {!props.el.completed ? (
             <div>
-              <input id={index} type="checkbox" onChange={() => changeElComplete(index)}></input>
-              <label htmlFor={index}>{el.title}</label>
+              <input id={props.index} type="checkbox" onChange={props.changeElComplete(props.index)}></input>
+              <label htmlFor={props.index}>{props.el.title}</label>
             </div>
-          ) : <p>{el.title}</p>
+          ) : <p>{props.el.title}</p>
           }
         </li>
     )
 }
-export default Home;
+export default userToDo;

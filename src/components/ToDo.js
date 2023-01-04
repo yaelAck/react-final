@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useRef, useState } from "react";
 import "../css/ToDo.css";
 import Header from "./Header";
+import UserToDo from './UserToDo'
 
 function ToDo(props) {
   const [userToDo, setUserToDo] = useState("");
@@ -29,24 +30,13 @@ function ToDo(props) {
   let mapToDo = userToDo
     ? userToDo.map((el, index) => {
       return (
-        <li
-          className="to-do-list"
-          key={index}
-          style={el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
-          <p>id: {el.id}</p>
-          {!el.completed ? (
-            <div>
-              <input id={index} type="checkbox" onChange={() => changeElComplete(index)}></input>
-              <label htmlFor={index}>{el.title}</label>
-            </div>
-          ) : <p>{el.title}</p>
-          }
-        </li>
+     <UserToDo el={el} index={index} changeElComplete={()=>changeElComplete}/>
       );
     })
     : null;
 
   const changeElComplete = (index) => {
+    console.log(index)
     const tempUserToDo = [...userToDo];
     tempUserToDo[index].completed = tempUserToDo[index].completed ? false : true;
     console.log(tempUserToDo, tempUserToDo[index])
