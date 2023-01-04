@@ -41,9 +41,7 @@ function ToDo(props) {
   const sortByComplited = () => {
     const tempUserToDo = [...userToDo];
     tempUserToDo.sort((a, b) => {
-      if (a.completed) {
-        return -1;
-      }
+      if (a.completed) {return -1;}
       return 1;
     });
     setUserToDo(tempUserToDo);
