@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "./Header";
 
 
-function Post() {
-    console.log(6731687643287);
+function Post(props) {
     let {id} = useParams();
     console.log(id)
     const [post, setPost] = useState("");  
@@ -18,7 +18,7 @@ function Post() {
       }
       data(id);
     
-    }, []);
+    }, [props.id]);
 
    async function show(id){
             const res = await fetch(
@@ -40,6 +40,7 @@ function Post() {
 
     return ( 
         <div>
+             <Header id={props.id}/>
             <h1>{post.title}</h1>
             <h2>{post.body}</h2>
             <button onClick={()=>show(post.id)}>show comments</button>

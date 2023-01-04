@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useLocalStorage from './useLocalStorage';
 
 function LogIn(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [items, setItems] = useState([])
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function serchUser() {
@@ -36,7 +36,7 @@ function LogIn(props) {
                     flagPassword = true;
                     localStorage.setItem('currentUser', JSON.stringify(items[item]));
                     props.setUserId(items[item].id);
-                    navigate(`user/${items[item].id}/home`);
+                    navigate(`user/${items[item].id}/home`,{state:username});
                 }
             }
         }

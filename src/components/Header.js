@@ -8,11 +8,12 @@ function Header(props) {
     return (
         <div>
             <ul>
-                <li className='header'><NavLink to={`user/${id}/home`}>Home</NavLink></li>
-                <li className='header'><NavLink to={`user/${id}/toDo`}>ToDo</NavLink></li>
-                <li className='header'><NavLink to={`user/${id}/posts`}>Posts</NavLink></li>
-                <li className='header'><NavLink to={`user/${id}/albums`}>Albums</NavLink></li>
-
+                <li className='header'><NavLink to={`/user/${id}/home`}>Home</NavLink></li>
+                <li className='header'><NavLink to={`/user/${id}/toDo`}>ToDo</NavLink></li>
+                <li className='header'><NavLink to={`/user/${id}/posts`}>Posts</NavLink></li>
+                <li className='header'><NavLink to={`/user/${id}/albums`}>Albums</NavLink></li>
+                <li className='header'><NavLink to={`/user/${id}/info`}>Info</NavLink></li>
+                <li className='header'><NavLink to={`/user/${id}/logout`}>Logout</NavLink></li>
             </ul>
         </div>
     )

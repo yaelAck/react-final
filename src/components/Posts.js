@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "../css/Posts.css"
+import Header from "./Header";
 
 
 function Posts(props) {
@@ -12,12 +13,12 @@ function Posts(props) {
           `https://jsonplaceholder.typicode.com/posts?userId=${id}`
         );
         const serverData = await res.json();
+        
         setUserPosts(serverData);
         console.log(props);
       }
-      const id = props.id
-      data(id);
-    }, []);
+      data(props.id);
+    }, [props.id]);
 
     function showPost(index){
         console.log(userposts[index])
@@ -38,7 +39,8 @@ function Posts(props) {
   
     return (
       <div>
-        <ul>{mapPosts}</ul>
+       <Header id={props.id}/>
+        <ul>{mapPosts? mapPosts:null}</ul>
         <Outlet />
       </div>
     );

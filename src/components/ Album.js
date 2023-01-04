@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
+import Header from "./Header";
 
 
 
-function Album() {
+function Album(props) {
     let {id} = useParams();
     console.log(id)
     const [album, setAlbum] = useState("");  
@@ -18,7 +19,7 @@ function Album() {
       }
       data(id);
     
-    }, []);
+    },[props.id]);
     
     // async function show(id){
     //         const res = await fetch(
@@ -52,6 +53,7 @@ function Album() {
     
     return ( 
         <div>
+            <Header id={props.id}/>
            {mapalbum}
         </div> );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 function Album(props) {
     const [useralbums, setUserAlbums] = useState("");
@@ -19,7 +20,7 @@ function Album(props) {
        
       }
       data(props.id);
-    }, []);
+    }, [props.id]);
 
     function showAlbum(index){
       console.log(useralbums[index])
@@ -40,6 +41,7 @@ function Album(props) {
   
     return (
       <div>
+       <Header id={props.id}/>
         <ul>{mapAlbum}</ul>
         <Outlet/>
       </div>

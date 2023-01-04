@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import "../css/ToDo.css";
+import Header from "./Header";
 
 function ToDo(props) {
   const [userToDo, setUserToDo] = useState("");
@@ -13,7 +14,7 @@ function ToDo(props) {
       console.log(props)
     }
     data(props.id);
-  }, []);
+  }, [props.id]);
 
   const mapToDo = userToDo
     ? userToDo.map((el, index) => {
@@ -29,12 +30,13 @@ function ToDo(props) {
               </div>
             ) : <p>{el.title}</p>}
           </li>
-        );
-      })
+      );
+    })
     : null;
-
-  return (
-    <div>
+    
+    return (
+      <div>
+       <Header id={props.id}/>
       <ul>{mapToDo}</ul>
     </div>
   );
