@@ -1,64 +1,77 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import useLocalStorage from './useLocalStorage';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useLocalStorage from "./useLocalStorage";
 
 function LogIn(props) {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [items, setItems] = useState([])
-    const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        async function serchUser() {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
-            const data = await response.json();
-            setItems(data)
-        }
-        serchUser()
-    }, [])
+  //cant go back and forword:
+  window.history.pushState(null, null, window.location.href);
+  window.onpopstate = window.history.go(1);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-
-        // return () => {
-        // }
-
-        let flagUsername = false;
-        let flagPassword = false;
-        for (let item in items) {
-            if (items[item].username === username) {
-                flagUsername = true;
-                let notPassword = items[item].address.geo.lat
-                let pointIndex = notPassword.indexOf(".")
-                let tempPassword = notPassword.slice(pointIndex + 1, pointIndex + 5)
-                if (tempPassword === password) {
-                    flagPassword = true;
-                    localStorage.setItem('currentUser', JSON.stringify(items[item]));
-                    props.setUserId(items[item].id);
-                    navigate(`user/${items[item].id}/home`,{state:username});
-                }
-            }
-        }
-        if (!flagUsername) {
-            alert("incorrect username")
-        }
-        if (flagUsername && !flagPassword) {
-            alert("incorrect password")
-        }
-
+  useEffect(() => {
+    async function serchUser() {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/users`
+      );
+      const data = await response.json();
+      setItems(data);
     }
+    serchUser();
+  }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    return (
-        <div>
-            <h1></h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
-                <input type="text" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">login</ button>
-            </form>
-        </div>
-    )
+    // return () => {
+    // }
+
+    let flagUsername = false;
+    let flagPassword = false;
+    for (let item in items) {
+      if (items[item].username === username) {
+        flagUsername = true;
+        let notPassword = items[item].address.geo.lat;
+        let pointIndex = notPassword.indexOf(".");
+        let tempPassword = notPassword.slice(pointIndex + 1, pointIndex + 5);
+        if (tempPassword === password) {
+          flagPassword = true;
+          localStorage.setItem("currentUser", JSON.stringify(items[item]));
+          props.setUserId(items[item].id);
+          navigate(`user/${items[item].id}/home`, { state: username });
+        }
+      }
+    }
+    if (!flagUsername) {
+      alert("incorrect username");
+    }
+    if (flagUsername && !flagPassword) {
+      alert("incorrect password");
+    }
+  };
+
+  return (
+    <div>
+      <h1></h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          placeholder="username"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="text"
+          value={password}
+          placeholder="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">login</button>
+      </form>
+    </div>
+  );
 }
 export default LogIn;

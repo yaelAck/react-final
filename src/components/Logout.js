@@ -6,7 +6,9 @@ export function Logout() {
     const navigate = useNavigate()
 
     const toLogIn = () => {
-        setTimeout(() => navigate("/"), 1200)
+        window.history.pushState(null,null,window.location.href);
+        window.onpopstate =window.history.go(1);
+        setTimeout(() => navigate("/"), 500)
     }
 
     return (
