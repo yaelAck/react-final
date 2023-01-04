@@ -10,8 +10,6 @@ function Album(props) {
     const albumPhotos = id * 50 - 49;
     const [album, setAlbum] = useState([]); 
     
-    
-    
     useEffect(() => {
       const arr = [];
       async function data() {
@@ -38,8 +36,7 @@ function Album(props) {
 
   const mapalbum = album.map((el, index) =>
     <li key={index}>
-
-      <img src={el.url} alt="color" className="photos"></img>
+      <img src={el.url} alt="color" className="photos" id="photos"></img>
     </li>)
 
   return (
@@ -48,7 +45,7 @@ function Album(props) {
       <div id="album-div">
         {mapalbum}
         <button id="albums-button" onClick={updateNum}>more photos</button>
-        <p>{num === 50? "you saw all the photos" : ""}</p>
+        <p>{!num? "you saw all the photos" : ""}</p>
       </div>
     </div>);
 }
