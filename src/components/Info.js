@@ -4,7 +4,7 @@ import Header from './Header';
 import '../css/Info.css'
 
 function Info(props) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState([]);
   const refInfo = useRef('')
   useEffect(() => {
     if (localStorage.getItem('currentUserInfo') !== null) {

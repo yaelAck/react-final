@@ -7,8 +7,9 @@ function LogIn(props) {
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
 
-    window.history.pushState(null,null,window.location.href);
-        window.onpopstate =window.history.go(1);
+    //enable going back in history
+    window.history.pushState(null, null, window.location.href);
+    window.onpopstate = window.history.go(1);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,7 +29,7 @@ function LogIn(props) {
             props.setUserId(item.id);
             navigate(`user/${item.id}/home`, { state: username });
         }
-        else{
+        else {
             alert("incorrect password")
         }
     }
