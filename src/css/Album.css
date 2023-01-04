@@ -7,12 +7,14 @@ li{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 1050px;
+    width: 1150px;
     margin: auto;
     gap: 10px;
 }
 
 .photos{
-    width: 300px;
+    width: 50px;
     display: block;
 }
+
+
