@@ -1,3 +1,12 @@
 .posts{
-    height: fit-content;
+    margin-right: 40px;
+    margin-top: 10px;
+    height: 80px;
+    list-style: none;
+    padding: 10px;
+    border:2px solid black;
+    width: 500px;
+    background-color: beige;
+    box-shadow: 3px 4px rgb(159, 142, 142);
+
 }

@@ -5,39 +5,36 @@ import Header from "./Header";
 
 
 function Album(props) {
+const [num, setNum] = useState(10);
     let {id} = useParams();
-    console.log(id)
+    const albumPhotos = id * 50 - 49;
     const [album, setAlbum] = useState("");  
     useEffect(() => {
-      async function data(id) {
-        const res = await fetch(
-          `https://jsonplaceholder.typicode.com/photos?id=${id}`
-        );
-        const serverData = await res.json();
-        setAlbum(serverData);
-        console.log(serverData)
+      const arr = [];
+      async function data() {
+        for(let i = albumPhotos;i <= albumPhotos + num; i++){
+          const res = await fetch(
+            `https://jsonplaceholder.typicode.com/photos?id=${i}`
+          );
+          const serverData = await res.json();
+            arr.push(serverData[0])
+        }
+        setAlbum(arr);
       }
       data(id);
     
-    },[props.id]);
+    },[num,props.id]);
     
-    // async function show(id){
-    //         const res = await fetch(
-    //           `https://jsonplaceholder.typicode.com/comments?postId=${id}`
-    //         );
-    //         const serverData = await res.json();
-    //         const comments = serverData.map((el, index) => {
-    //             return (
-    //               <li 
-    //                 key={index}
-    //               >
-    //                   <h4>{el.name}</h4>
-    //                   <h5>{el.body}</h5>
-    //               </li>
-    //             );
-    //           })
-    //         setComments(comments);
-    // }
+
+    function updateNum(){
+      setNum((prev)=> {
+        if(prev === 50){
+          alert('you saw all the photos')
+        }else{
+         return prev + 10;
+        }
+      })
+    }
 
     const mapalbum = album
       ? album.map((el, index) => {
@@ -55,6 +52,7 @@ function Album(props) {
         <div>
             <Header id={props.id}/>
            {mapalbum}
+           <button onClick={updateNum}>more photos</button>
         </div> );
 }
 

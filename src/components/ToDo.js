@@ -20,23 +20,25 @@ function ToDo(props) {
     ? userToDo.map((el, index) => {
         return (
           <li
+          className="to-do-list"
             key={index}
-            style={el.completed ? { color: "green" } : null}
+            style={el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}
           >
+             <p>id: {el.id}</p>
             {!el.completed ? (
               <div>
                 <input id={index} type="checkbox"></input>
                 <label htmlFor={index}>{el.title}</label>
-              </div>
+                </div>
             ) : <p>{el.title}</p>}
           </li>
       );
     })
     : null;
-    
     return (
       <div>
        <Header id={props.id}/>
+       <button>sort by complete posts</button>
       <ul>{mapToDo}</ul>
     </div>
   );
