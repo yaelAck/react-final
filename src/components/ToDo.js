@@ -20,8 +20,10 @@ function ToDo(props) {
     ? userToDo.map((el, index) => {
       return (
         <li
+        className="to-do-list"
           key={index}
-          style={el.completed ? { color: "green" } : null}>
+          style={el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
+          <p>id: {el.id}</p>
           {!el.completed ? (
             <div>
               <input id={index} type="checkbox"></input>
@@ -72,9 +74,9 @@ function ToDo(props) {
       <button onClick={sortByAlphabet}>sort by alphabet</button>
       <button onClick={sortRandomly}>sort randomly</button>
 
-      <ul>{mapToDo}</ul>
-    </div>
-  );
+        <ul>{mapToDo}</ul>
+      </div>
+      );
 }
 
-export default ToDo;
+      export default ToDo;

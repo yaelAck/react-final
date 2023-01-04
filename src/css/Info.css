@@ -1,0 +1,9 @@
+#info-div{
+    border: 1px solid black;
+    padding: 75px;
+    background-color: rgb(220, 205, 205);
+    width: fit-content;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 12px;
+}

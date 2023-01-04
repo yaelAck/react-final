@@ -3,18 +3,22 @@ ul{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 
-li{
+.to-do-list{
     list-style: none;
     padding: 50px;
     border:2px solid black;
     width: 150px;
     height: 100px;
+    background-color: beige;
+    box-shadow: 3px 4px rgb(159, 142, 142);
+
 }
 
-ul li input[type="checkbox"]:checked+label{
-    color:green;
+li:has(input[type="checkbox"]:checked){
+    background-color:rgb(10, 227, 10);
 }
+

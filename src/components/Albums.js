@@ -11,7 +11,6 @@ function Album(props) {
           `https://jsonplaceholder.typicode.com/albums?userId=${id}`
         );
         const serverData = await res.json();
-        console.log(serverData)
         serverData.sort(function (a, b) {
             return a.title.localeCompare(b.title);
           });
