@@ -35,8 +35,8 @@ function Album(props) {
   }
 
   const mapalbum = album.map((el, index) =>
-    <li key={index}>
-      <img src={el.url} alt="color" className="photos" id="photos"></img>
+    <li key={index} id="li">
+      <img src={el.url} alt="color" id="photos"></img>
     </li>)
 
   return (

@@ -1,8 +1,8 @@
-li{
+li {
     list-style: none;
 }
 
-#album-div{
+#album-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,9 +12,20 @@ li{
     gap: 10px;
 }
 
-#photos{
-    width: 40px;
+#photos {
+    width: 65px;
     display: block;
+    border: 1px solid black;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 3px 4px rgb(169, 164, 164);
 }
 
+#li:hover {
+    transform: scale(2.4);
+}
 
+#li:hover > #photos{
+    padding: 2px;
+}
