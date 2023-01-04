@@ -7,13 +7,13 @@ function LogIn(props) {
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
 
+    localStorage.clear();
     //enable going back in history
     window.history.pushState(null, null, window.location.href);
     window.onpopstate = window.history.go(1);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        localStorage.clear();
         const response = await fetch(`https://jsonplaceholder.typicode.com/users?username=${username}`)
         const data = await response.json();
         const item = (data[0])
