@@ -6,7 +6,7 @@ function Albums(props) {
   const [useralbums, setUserAlbums] = useState([]);
   const navigate = useNavigate();
   const refAlbums = useRef('')
-  
+
   useEffect(() => {
     if (localStorage.getItem('currentUserAlbums') !== null) {
       setUserAlbums(JSON.parse(localStorage.getItem('currentUserAlbums')))
@@ -27,7 +27,6 @@ function Albums(props) {
       data(props.id);
     }
     return () => localStorage.setItem("currentUserAlbums", JSON.stringify(refAlbums.current))
-
   }, [props.id]);
 
   function showAlbum(index) {
@@ -47,7 +46,6 @@ function Albums(props) {
       <Outlet />
     </div>
   );
-
 }
 
 export default Albums;
