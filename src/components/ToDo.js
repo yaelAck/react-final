@@ -4,7 +4,7 @@ import Header from "./Header";
 import UserToDo from './UserToDo'
 
 function ToDo(props) {
-  const [userToDo, setUserToDo] = useState("");
+  const [userToDo, setUserToDo] = useState([]);
   const refToDo = useRef('')
   useEffect(() => {
     if(localStorage.getItem('currentUerToDo') !== null){
@@ -27,23 +27,16 @@ function ToDo(props) {
     return(()=>localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current)))
   }, [props.id]);
 
-  let mapToDo = userToDo
-    ? userToDo.map((el, index) => {
-      return (
-     <UserToDo el={el} index={index} changeElComplete={()=>changeElComplete}/>
-      );
-    })
-    : null;
-
+  let mapToDo = userToDo.map((el, index) => 
+     <UserToDo el={el} index={index} changeElComplete={()=>changeElComplete(index)}/>
+    )
+  
   const changeElComplete = (index) => {
-    console.log(index)
     const tempUserToDo = [...userToDo];
     tempUserToDo[index].completed = tempUserToDo[index].completed ? false : true;
-    console.log(tempUserToDo, tempUserToDo[index])
     setUserToDo(tempUserToDo)
     refToDo.current = tempUserToDo;
   }
-  // console.log(userToDo)
 
   const sortByComplited = () => {
     const tempUserToDo = [...userToDo];
