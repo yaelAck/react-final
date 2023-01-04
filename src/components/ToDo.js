@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from "react";
 import "../css/ToDo.css";
-import { UserNav } from "./UserNav";
+import Header from "./Header";
 
-function ToDo() {
+function ToDo(props) {
   const [userToDo, setUserToDo] = useState("");
   useEffect(() => {
     async function data(id) {
@@ -11,28 +11,32 @@ function ToDo() {
       );
       const serverData = await res.json();
       setUserToDo(serverData);
+      console.log(props)
     }
-    data(1);
-  }, []);
-
-
+    data(props.id);
+  }, [props.id]);
 
   const mapToDo = userToDo
     ? userToDo.map((el, index) => {
-      return (
-        <>
-          <li key={index} style={el.completed ? { color: 'green' } : null}>
-            {el.title}
-            {!el.completed ? <input type="checkBox"></input> : null}
+        return (
+          <li
+            key={index}
+            style={el.completed ? { color: "green" } : null}
+          >
+            {!el.completed ? (
+              <div>
+                <input id={index} type="checkbox"></input>
+                <label htmlFor={index}>{el.title}</label>
+              </div>
+            ) : <p>{el.title}</p>}
           </li>
-        </>
       );
     })
     : null;
     
     return (
       <div>
-      <UserNav />
+       <Header id={props.id}/>
       <ul>{mapToDo}</ul>
     </div>
   );

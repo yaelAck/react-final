@@ -1,16 +1,20 @@
+import { useEffect, useState } from "react";
+import Header from "./Header";
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { UserNav } from './UserNav';
 
-export function Home() {
-    const location = useLocation()
+
+
+export function Home(props) {
+    const [userName,setUserName] = useState('');
+    useEffect(() => {
+        setUserName(props.userName)
+    },[props.id,props.userName])
+  
     return (
         <>
-            <UserNav/>
-            <h1> Hello, {location.state}</h1>
-            <button>button1</button>
-            {/* <Link to="/ToDo"> ToDo</Link> */}
-
+             <Header id={props.id}/>
+            <h1> Hello,{userName}</h1>
         </>
     )
 }
+export default Home;
