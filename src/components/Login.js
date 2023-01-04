@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import {useNavigate } from 'react-router-dom';
 import useLocalStorage from './useLocalStorage';
 
-function LogIn() {
+function LogIn(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [items, setItems] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function serchUser() {
@@ -32,8 +34,9 @@ function LogIn() {
                 let tempPassword = notPassword.slice(pointIndex + 1, pointIndex + 5)
                 if (tempPassword === password) {
                     flagPassword = true;
-                    console.log("yyyyy")
-                    localStorage.setItem('currentUser', JSON.stringify(items[item]))
+                    localStorage.setItem('currentUser', JSON.stringify(items[item]));
+                    props.setUserId(items[item].id);
+                    navigate(`user/${items[item].id}/home`);
                 }
             }
         }

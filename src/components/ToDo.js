@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import "../css/ToDo.css";
 
-function ToDo() {
+function ToDo(props) {
   const [userToDo, setUserToDo] = useState("");
   useEffect(() => {
     async function data(id) {
@@ -10,18 +10,24 @@ function ToDo() {
       );
       const serverData = await res.json();
       setUserToDo(serverData);
+      console.log(props)
     }
-    data(1);
+    data(props.id);
   }, []);
-
-
 
   const mapToDo = userToDo
     ? userToDo.map((el, index) => {
         return (
-          <li key={index} style={el.completed?{color: 'green'}:null}>
-            {el.title}
-            {!el.completed ? <input type="checkBox"></input> : null}
+          <li
+            key={"input" + index}
+            style={el.completed ? { color: "green" } : null}
+          >
+            {!el.completed ? (
+              <div>
+                <input id={"input" + index} type="checkbox"></input>
+                <label htmlFor={index}>{el.title}</label>
+              </div>
+            ) : <p>{el.title}</p>}
           </li>
         );
       })
