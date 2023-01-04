@@ -22,7 +22,9 @@ const [num, setNum] = useState(10);
         setAlbum(arr);
       }
       data(id);
-    
+
+      // return(()=>localStorage.setItem("currentUserAlbum", JSON.stringify(album)))
+
     },[num,props.id]);
     
 
@@ -39,10 +41,8 @@ const [num, setNum] = useState(10);
     const mapalbum = album
       ? album.map((el, index) => {
           return (
-            <li
-              key={index} 
-            >
-                <img src={el.url} alt="color" className='album'></img>
+            <li key={index} className='albums'>
+                <img src={el.url} alt="color"></img>
             </li>
           );
         })

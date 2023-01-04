@@ -1,57 +1,59 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useRef, useState } from "react";
 import "../css/ToDo.css";
 import Header from "./Header";
 
 function ToDo(props) {
   const [userToDo, setUserToDo] = useState("");
+  const refToDo = useRef('')
   useEffect(() => {
-    async function data(id) {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/todos?userId=${id}`
-      );
-      const serverData = await res.json();
-      setUserToDo(serverData);
-      // console.log(props)
+    if(localStorage.getItem('currentUerToDo') !== null){
+      setUserToDo(JSON.parse(localStorage.getItem('currentUerToDo')))
+      refToDo.current = JSON.parse(localStorage.getItem('currentUerToDo'))
+      console.log("enter to local storage to do")
     }
-    data(props.id);
+    else{
+      async function data(id) {
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/todos?userId=${id}`
+        );
+        const serverData = await res.json();
+        setUserToDo(serverData);
+        refToDo.current = serverData;
+        // console.log(props)
+      }
+      data(props.id);
+    }
+    return(()=>localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current)))
   }, [props.id]);
 
   let mapToDo = userToDo
     ? userToDo.map((el, index) => {
-        return (
-          <li
-            className="to-do-list"
-            key={index}
-            style={
-              el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null
-            }
-          >
-            <p>id: {el.id}</p>
-            {!el.completed ? (
-              <div>
-                <input
-                  id={index}
-                  type="checkbox"
-                  onChange={() => changeElComplete(index)}
-                ></input>
-                <label htmlFor={index}>{el.title}</label>
-              </div>
-            ) : (
-              <p>{el.title}</p>
-            )}
-          </li>
-        );
-      })
+      return (
+        <li
+          className="to-do-list"
+          key={index}
+          style={el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
+          <p>id: {el.id}</p>
+          {!el.completed ? (
+            <div>
+              <input id={index} type="checkbox" onChange={() => changeElComplete(index)}></input>
+              <label htmlFor={index}>{el.title}</label>
+            </div>
+          ) : <p>{el.title}</p>
+          }
+        </li>
+      );
+    })
     : null;
 
   const changeElComplete = (index) => {
     const tempUserToDo = [...userToDo];
-    tempUserToDo[index].completed = tempUserToDo[index].completed
-      ? false
-      : true;
-    console.log(tempUserToDo, tempUserToDo[index]);
-    setUserToDo(tempUserToDo);
-  };
+    tempUserToDo[index].completed = tempUserToDo[index].completed ? false : true;
+    console.log(tempUserToDo, tempUserToDo[index])
+    setUserToDo(tempUserToDo)
+    refToDo.current = tempUserToDo;
+  }
+  // console.log(userToDo)
 
   const sortByComplited = () => {
     const tempUserToDo = [...userToDo];

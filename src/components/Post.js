@@ -7,7 +7,7 @@ import '../css/post.css'
 function Post(props) {
     let {id} = useParams();
     console.log(id)
-    const [post, setPost] = useState('');  
+    const [post, setPost] = useState("");  
     const [comments, setComments] = useState('');
     useEffect(() => {
       async function data(id) {
@@ -29,7 +29,6 @@ function Post(props) {
             const comments = serverData.map((el, index) => {
                 return (
                   <li 
-                  className="photos"
                     key={index}
                   >
                       <h4 className="h4">{el.name}</h4>
@@ -42,14 +41,14 @@ function Post(props) {
 
     return ( 
       <div>
-        <Header />
-        <div id="photos-div">
-            <h1 id="h1">{post.title}</h1>
-            <h2 id="h2">{post.body}</h2>
-            <button onClick={()=>show(post.id)}>show comments</button>
-            {comments?comments:null}
-            </div>
-        </div>
+      <Header />
+      <div id="photos-div">
+          <h1 id="h1">{post.title}</h1>
+          <h2 id="h2">{post.body}</h2>
+          <button onClick={()=>show(post.id)}>show comments</button>
+          {comments?comments:null}
+          </div>
+      </div>
      );
 }
 
