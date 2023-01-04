@@ -6,7 +6,7 @@ export function Logout() {
     const navigate = useNavigate()
 
     const toLogIn = () => {
-        setTimeout(() => navigate("/LogIn"), 2000)
+        setTimeout(() => navigate("/"), 1200)
     }
 
     return (
