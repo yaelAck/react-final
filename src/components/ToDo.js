@@ -1,11 +1,12 @@
-import React, { Component, useEffect, useRef, useState } from "react";
-import "../css/ToDo.css";
-import Header from "./Header";
+import React, { useEffect, useRef, useState } from "react";
 import UserToDo from './UserToDo'
+import Header from "./Header";
+import "../css/ToDo.css";
 
 function ToDo(props) {
   const [userToDo, setUserToDo] = useState([]);
   const refToDo = useRef('')
+
   useEffect(() => {
     if (localStorage.getItem('currentUerToDo') !== null) {
       setUserToDo(JSON.parse(localStorage.getItem('currentUerToDo')))
@@ -20,7 +21,6 @@ function ToDo(props) {
         const serverData = await res.json();
         setUserToDo(serverData);
         refToDo.current = serverData;
-        // console.log(props)
       }
       data(props.id);
     }
@@ -41,7 +41,7 @@ function ToDo(props) {
   const sortByComplited = () => {
     const tempUserToDo = [...userToDo];
     tempUserToDo.sort((a, b) => {
-      if (a.completed) {return -1;}
+      if (a.completed) { return -1; }
       return 1;
     });
     setUserToDo(tempUserToDo);

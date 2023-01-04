@@ -2,10 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import "../css/Header.css"
 
-
 function Header(props) {
-   const user = props.id;
-   const id = user;
+    const user = props.id;
+    const id = user;
     return (
         <div>
             <ul>

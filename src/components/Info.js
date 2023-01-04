@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
-import { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from 'react';
 import Header from './Header';
 import '../css/Info.css'
 
 function Info(props) {
   const [user, setUser] = useState([]);
   const refInfo = useRef('')
+
   useEffect(() => {
     if (localStorage.getItem('currentUserInfo') !== null) {
       setUser(JSON.parse(localStorage.getItem('currentUserInfo')))
@@ -39,4 +39,5 @@ function Info(props) {
     </>
   );
 }
+
 export default Info;
