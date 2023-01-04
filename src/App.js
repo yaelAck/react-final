@@ -1,16 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import ToDo from "./components/ToDo";
-import { Route, Routes, useLocation } from "react-router-dom";
-import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
 import LogIn from "./components/Login";
 import Posts from "./components/Posts";
 import Albums from "./components/Albums";
 import Home from "./components/Home";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Post from "./components/Post";
 import Album from "./components/ Album";
-import  Info  from './components/Info.js';
+import Info from './components/Info.js';
 import { Logout } from './components/Logout.js';
 
 function App() {
@@ -25,7 +23,7 @@ if(localStorage.getItem('currentUser') !== null){
 setUserId(JSON.parse(localStorage.getItem('currentUser')).id)
 setUserName(JSON.parse(localStorage.getItem('currentUser')).username)
 }
- },[])
+ },[userId])
 
   return (
     <div>

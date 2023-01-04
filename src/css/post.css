@@ -1,0 +1,40 @@
+.photos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border: 1px solid black;
+    width: 500px;
+    padding: 30px;
+    border-radius:12px;
+    margin-top: 10px;
+    box-shadow: 3px 4px rgb(169, 164, 164);
+}
+
+#photos-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 10px;
+
+}
+
+#h2{
+    width: 900px;
+}
+
+button{
+    padding: 5px;
+    border-radius: 6px;
+    background-color: rgb(192, 150, 233);
+}
+
+button:hover{
+    background-color: rgb(134, 134, 248);
+    color: white;
+}
+
+

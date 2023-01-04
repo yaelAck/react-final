@@ -53,9 +53,8 @@ const [num, setNum] = useState(10);
             <Header id={props.id}/>
             <div id ="album-div">
            {mapalbum}
+           <button id="albums-button" onClick={updateNum}>more photos</button>
            </div> 
-           <button onClick={updateNum}>more photos</button>
-       
         </div>);
 }
 
