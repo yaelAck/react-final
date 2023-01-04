@@ -10,7 +10,7 @@ function Album(props) {
     const albumPhotos = id * 50 - 49;
     const [album, setAlbum] = useState([]); 
     
-    
+    window.addEventListener('scroll', ()=>(console.log(window.scrollY)))
     
     useEffect(() => {
       const arr = [];
@@ -29,6 +29,7 @@ function Album(props) {
     
  
   function updateNum() {
+    console.log(3333333);
     setNum((prev) => {
       if (prev < 50) {
         return prev + 10;
@@ -43,7 +44,7 @@ function Album(props) {
     </li>)
 
   return (
-    <div>
+    <div onScroll={updateNum}>
       <Header id={props.id} />
       <div id="album-div">
         {mapalbum}
