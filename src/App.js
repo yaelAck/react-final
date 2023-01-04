@@ -5,10 +5,11 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import LogIn from "./components/Login";
 import Posts from "./components/Posts";
-import Album from "./components/Album";
+import Albums from "./components/Albums";
 import Home from "./components/Home";
 import { useEffect, useMemo, useState } from "react";
 import Post from "./components/Post";
+import Album from "./components/ Album";
 
 function App() {
     const [userId, setUserId] = useState('');
@@ -29,10 +30,10 @@ function App() {
           <Route path=':id'>
             <Route path="home" element={<Home id={userId}/>}></Route>
             <Route path="toDo" element={<ToDo id={userId}/>}></Route>
-            <Route path="posts" element={<Posts id={userId}/>}>
-            </Route>
+            <Route path="posts" element={<Posts id={userId}/>}></Route>
             <Route path="posts/:id" element={<Post />}></Route>
-            <Route path="albums" element={<Album id={userId}/>}></Route>
+            <Route path="albums" element={<Albums id={userId}/>}></Route>
+            <Route path="albums/:id" element={<Album />}></Route>
             <Route path="*"></Route>
           </Route>
         </Route>
