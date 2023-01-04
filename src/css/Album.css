@@ -12,7 +12,7 @@ li {
     gap: 10px;
 }
 
-#photos{
+#albums-photos{
     width: 65px;
     display: block;
     border: 1px solid black;
@@ -22,10 +22,18 @@ li {
     box-shadow: 3px 4px rgb(169, 164, 164);
 }
 
-#li:hover {
+#albums-li:hover {
     transform: scale(2.4);
 }
 
-#li:hover > #photos{
+#albums-li:hover > #albums-photos{
     padding: 2px;
+}
+
+#albums-button{
+    margin-top: 2rem;
+}
+
+#albums-p{
+    margin-top: 3rem;
 }

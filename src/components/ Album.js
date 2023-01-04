@@ -38,8 +38,8 @@ function Album(props) {
   }
 
   const mapalbum = album.map((el, index) =>
-    <li key={index} id="li">
-      <img src={el.url} alt="color" id="photos"></img>
+    <li key={index} id="albums-li">
+      <img src={el.url} alt="color" id="albums-photos"></img>
     </li>)
 
   return (
@@ -48,7 +48,7 @@ function Album(props) {
       <div id="album-div">
         {mapalbum}
         <button id="albums-button" onClick={updateNum}>more photos</button>
-        <p>{!num? "you saw all the photos" : ""}</p>
+        <p id="albums-p">{!num? "you saw all the photos" : ""}</p>
       </div>
     </div>);
 }
