@@ -34,27 +34,29 @@ const [num, setNum] = useState(10);
         }
       })
     }
+ 
+  function updateNum() {
+    setNum((prev) => {
+      if (prev < 50) {
+        return prev + 10;
+      }
+    })
+  }
 
-    const mapalbum = album
-      ? album.map((el, index) => {
-          return (
-            <li key={index} className='albums'>
-                <img src={el.url} alt="color" className="photos"></img>
-            </li>
-          );
-        })
-      : null;
-    
-    return ( 
-      <div>
-            <Header id={props.id}/>
-            <div id ="album-div">
-           {mapalbum}
-           <button id="albums-button" onClick={updateNum}>more photos</button>
-           </div> 
-        </div>);
+  const mapalbum = album.map((el, index) =>
+    <li key={index} className='albums'>
+      <img src={el.url} alt="color"></img>
+    </li>)
+
+  return (
+    <div>
+      <Header id={props.id} />
+      <div id="album-div">
+        {mapalbum}
+        <button id="albums-button" onClick={updateNum}>more photos</button>
+        <p>{num===50? "you saw all the photos" : ""}</p>
+      </div>
+    </div>);
 }
-
 export default Album;
 
- 
