@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import "../css/ToDo.css";
+import { UserNav } from "./UserNav";
 
 function ToDo() {
   const [userToDo, setUserToDo] = useState("");
@@ -18,17 +19,20 @@ function ToDo() {
 
   const mapToDo = userToDo
     ? userToDo.map((el, index) => {
-        return (
-          <li key={index} style={el.completed?{color: 'green'}:null}>
+      return (
+        <>
+          <li key={index} style={el.completed ? { color: 'green' } : null}>
             {el.title}
             {!el.completed ? <input type="checkBox"></input> : null}
           </li>
-        );
-      })
+        </>
+      );
+    })
     : null;
-
-  return (
-    <div>
+    
+    return (
+      <div>
+      <UserNav />
       <ul>{mapToDo}</ul>
     </div>
   );
