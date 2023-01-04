@@ -1,63 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useLocalStorage from './useLocalStorage';
+import "../css/Login.css"
 
 function LogIn(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [items, setItems] = useState([])
     const navigate = useNavigate();
-
-    useEffect(() => {
-        async function serchUser() {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
-            const data = await response.json();
-            setItems(data)
-        }
-        serchUser()
-    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users?username=${username}`)
+        const data = await response.json();
+        const item = (data[0])
 
-
-        // return () => {
-        // }
-
-        let flagUsername = false;
-        let flagPassword = false;
-        for (let item in items) {
-            if (items[item].username === username) {
-                flagUsername = true;
-                let notPassword = items[item].address.geo.lat
-                let pointIndex = notPassword.indexOf(".")
-                let tempPassword = notPassword.slice(pointIndex + 1, pointIndex + 5)
-                if (tempPassword === password) {
-                    flagPassword = true;
-                    localStorage.setItem('currentUser', JSON.stringify(items[item]));
-                    props.setUserId(items[item].id);
-                    navigate(`user/${items[item].id}/home`,{state:username});
-                }
-            }
-        }
-        if (!flagUsername) {
+        if (!item) {
             alert("incorrect username")
+            return
         }
-        if (flagUsername && !flagPassword) {
+        let notPassword = item.address.geo.lat
+        let tempPassword = notPassword.slice(-4)
+
+        if (tempPassword === password) {
+            localStorage.setItem('currentUser', JSON.stringify(item));
+            props.setUserId(item.id);
+            navigate(`user/${item.id}/home`, { state: username });
+        }
+        else{
             alert("incorrect password")
         }
-
     }
 
-
     return (
-        <div>
-            <h1></h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
-                <input type="text" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">login</ button>
-            </form>
+        <div id="parentDiv">
+            <div id="container">
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <input className="LoginInput" type="text" value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
+                    <input className="LoginInput" type="text" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                    <button className="Loginbutton" type="submit">login</ button>
+                </form>
+            </div>
         </div>
     )
 }

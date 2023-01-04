@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Header from './Header';
 import { useEffect, useState } from "react";
+import Header from './Header';
 import '../css/Info.css'
 
 function Info(props) {
@@ -15,6 +14,9 @@ function Info(props) {
         setUser(serverData[0]);
       }
       data(props.id);
+
+      return(localStorage.setItem("currentUserInfo", JSON.stringify(user)))
+
     },[props.id]);
    const address = `${user?.address?.city}, ${user?.address?.street},  ${user?.address?.zipcode} `;
   

@@ -6,13 +6,10 @@ import React from 'react';
 
 export function Home(props) {
     const [userName,setUserName] = useState('');
+
     useEffect(() => {
         setUserName(props.userName)
-
-        
-
-    },[props.id,props.userName])
-    console.log(userName)
+    },[props.userName])
   
     return (
         <>
