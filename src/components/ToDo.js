@@ -46,43 +46,54 @@ function ToDo(props) {
   // console.log(userToDo)
 
   const sortByComplited = () => {
-    const tempUserToDo = [...userToDo]
+    const tempUserToDo = [...userToDo];
     tempUserToDo.sort((a, b) => {
       if (a.completed) {
-        return -1
+        return -1;
       }
-      return 1
-    })
-    setUserToDo(tempUserToDo)
-  }
+      return 1;
+    });
+    setUserToDo(tempUserToDo);
+  };
 
   const sortById = () => {
-    const tempUserToDo = [...userToDo]
-    tempUserToDo.sort((a, b) => a.id - b.id)
-    setUserToDo(tempUserToDo)
-  }
+    const tempUserToDo = [...userToDo];
+    tempUserToDo.sort((a, b) => a.id - b.id);
+    setUserToDo(tempUserToDo);
+  };
 
   const sortByAlphabet = () => {
-    const tempUserToDo = [...userToDo]
+    const tempUserToDo = [...userToDo];
     tempUserToDo.sort((a, b) => a.title.localeCompare(b.title));
-    setUserToDo(tempUserToDo)
-  }
+    setUserToDo(tempUserToDo);
+  };
 
   const sortRandomly = () => {
-    const tempUserToDo = [...userToDo]
+    const tempUserToDo = [...userToDo];
     tempUserToDo.sort(() => 0.5 - Math.random());
-    setUserToDo(tempUserToDo)
-  }
+    setUserToDo(tempUserToDo);
+  };
 
   return (
     <div>
       <Header id={props.id} />
-      <button onClick={sortByComplited}>sort by complited posts</button>
-      <button onClick={sortById}>sort by posts id</button>
-      <button onClick={sortByAlphabet}>sort by alphabet</button>
-      <button onClick={sortRandomly}>sort randomly</button>
-
-      <ul>{mapToDo}</ul>
+      <div id="to-div">
+        <div>
+        <button className="to-button" onClick={sortByComplited}>
+          sort by complited posts
+        </button>
+        <button className="to-button" onClick={sortById}>
+          sort by posts id
+        </button>
+        <button className="to-button" onClick={sortByAlphabet}>
+          sort by alphabet
+        </button>
+        <button className="to-button" onClick={sortRandomly}>
+          sort randomly
+        </button>
+        </div>
+        <ul>{mapToDo}</ul>
+      </div>
     </div>
   );
 }

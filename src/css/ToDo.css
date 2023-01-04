@@ -9,16 +9,29 @@ ul{
 
 .to-do-list{
     list-style: none;
-    padding: 50px;
+    padding: 30px;
     border:2px solid black;
     width: 150px;
     height: 100px;
     background-color: beige;
     box-shadow: 3px 4px rgb(159, 142, 142);
-
 }
 
 li:has(input[type="checkbox"]:checked){
     background-color:rgb(10, 227, 10);
 }
 
+input[type="checkbox"]:checked{
+    display: none;
+}
+
+.to-button{
+    margin-top: 10px;
+    width: 100px;
+    display: inline;
+}
+
+#to-div{
+   display: flex;
+  align-items: center;
+}

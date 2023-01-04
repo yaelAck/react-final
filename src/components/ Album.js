@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
-
+import '../css/Album.css'
 
 
 function Album(props) {
@@ -12,7 +12,7 @@ const [num, setNum] = useState(10);
     useEffect(() => {
       const arr = [];
       async function data() {
-        for(let i = albumPhotos;i <= albumPhotos + num; i++){
+        for(let i = albumPhotos;i < albumPhotos + num; i++){
           const res = await fetch(
             `https://jsonplaceholder.typicode.com/photos?id=${i}`
           );
@@ -49,11 +49,13 @@ const [num, setNum] = useState(10);
       : null;
     
     return ( 
-        <div>
+      <div>
             <Header id={props.id}/>
+            <div id ="album-div">
            {mapalbum}
-           <button onClick={updateNum}>more photos</button>
-        </div> );
+           <button id="albums-button" onClick={updateNum}>more photos</button>
+           </div> 
+        </div>);
 }
 
 export default Album;
