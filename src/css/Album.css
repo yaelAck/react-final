@@ -2,12 +2,6 @@ li{
     list-style: none;
 }
 
-.album{
-   height: 200px;
-   width: 200px;
-   display: block;
-}
-
 #album-div{
     display: flex;
     justify-content: center;
@@ -19,7 +13,6 @@ li{
 }
 
 .photos{
-    height: 10px;
-    width: 10px;
+    width: 40px;
     display: block;
 }
