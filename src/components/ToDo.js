@@ -19,12 +19,12 @@ function ToDo(props) {
     ? userToDo.map((el, index) => {
         return (
           <li
-            key={"input" + index}
+            key={index}
             style={el.completed ? { color: "green" } : null}
           >
             {!el.completed ? (
               <div>
-                <input id={"input" + index} type="checkbox"></input>
+                <input id={index} type="checkbox"></input>
                 <label htmlFor={index}>{el.title}</label>
               </div>
             ) : <p>{el.title}</p>}

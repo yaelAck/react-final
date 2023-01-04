@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Album(props) {
     const [useralbums, setUserAlbums] = useState("");
+    const navigate = useNavigate();
     useEffect(() => {
       async function data(id) {
         const res = await fetch(
@@ -19,12 +21,15 @@ function Album(props) {
       data(props.id);
     }, []);
 
-   
+    function showAlbum(index){
+      console.log(useralbums[index])
+      navigate(`${useralbums[index].id}`)
+  }
   
     const mapAlbum = useralbums
       ? useralbums.map((el, index) => {
           return (
-            <li
+            <li onClick={()=>showAlbum(index)}
               key={index} className='posts'
             >
                 <h4>{el.title}</h4>
@@ -36,6 +41,7 @@ function Album(props) {
     return (
       <div>
         <ul>{mapAlbum}</ul>
+        <Outlet/>
       </div>
     );
   
