@@ -4,9 +4,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 export function Logout() {
     localStorage.removeItem('currentUser'); 
     const navigate = useNavigate()
-
+    
     const toLogIn = () => {
-        setTimeout(() => navigate("/"), 1200)
+        setTimeout(() => navigate("/"), 500)
     }
 
     return (

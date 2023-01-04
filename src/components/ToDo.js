@@ -26,7 +26,7 @@ function ToDo(props) {
           <p>id: {el.id}</p>
           {!el.completed ? (
             <div>
-              <input id={index} type="checkbox"></input>
+              <input id={index} type="checkbox" onChange={()=>changeElComplite(index)}></input>
               <label htmlFor={index}>{el.title}</label>
             </div>
           ) : <p>{el.title}</p>
@@ -35,6 +35,13 @@ function ToDo(props) {
       );
     })
     : null;
+
+    const changeElComplite =(index) =>{
+      const tempUserToDo = [...userToDo];
+      tempUserToDo[index].completed= tempUserToDo[index].completed?false:true;
+      console.log(tempUserToDo, tempUserToDo[index])
+      setUserToDo(tempUserToDo)
+    }
   // console.log(userToDo)
 
   const sortByComplited = () => {
