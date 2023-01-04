@@ -7,12 +7,12 @@ function ToDo(props) {
   const [userToDo, setUserToDo] = useState([]);
   const refToDo = useRef('')
   useEffect(() => {
-    if(localStorage.getItem('currentUerToDo') !== null){
+    if (localStorage.getItem('currentUerToDo') !== null) {
       setUserToDo(JSON.parse(localStorage.getItem('currentUerToDo')))
       refToDo.current = JSON.parse(localStorage.getItem('currentUerToDo'))
       console.log("enter to local storage to do")
     }
-    else{
+    else {
       async function data(id) {
         const res = await fetch(
           `https://jsonplaceholder.typicode.com/todos?userId=${id}`
@@ -24,13 +24,13 @@ function ToDo(props) {
       }
       data(props.id);
     }
-    return(()=>localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current)))
+    return (() => localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current)))
   }, [props.id]);
 
-  let mapToDo = userToDo.map((el, index) => 
-     <UserToDo el={el} index={index} changeElComplete={()=>changeElComplete(index)}/>
-    )
-  
+  let mapToDo = userToDo.map((el, index) =>
+    <UserToDo el={el} index={index} changeElComplete={() => changeElComplete(index)} />
+  )
+
   const changeElComplete = (index) => {
     const tempUserToDo = [...userToDo];
     tempUserToDo[index].completed = tempUserToDo[index].completed ? false : true;
@@ -72,18 +72,10 @@ function ToDo(props) {
       <Header id={props.id} />
       <div id="to-div">
         <div>
-        <button className="to-button" onClick={sortByComplited}>
-          sort by complited posts
-        </button>
-        <button className="to-button" onClick={sortById}>
-          sort by posts id
-        </button>
-        <button className="to-button" onClick={sortByAlphabet}>
-          sort by alphabet
-        </button>
-        <button className="to-button" onClick={sortRandomly}>
-          sort randomly
-        </button>
+          <button className="to-button" onClick={sortByComplited}>sort by complited posts</button>
+          <button className="to-button" onClick={sortById}>sort by posts id</button>
+          <button className="to-button" onClick={sortByAlphabet}>sort by alphabet</button>
+          <button className="to-button" onClick={sortRandomly}>sort randomly</button>
         </div>
         <ul>{mapToDo}</ul>
       </div>
