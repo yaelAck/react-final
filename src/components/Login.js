@@ -7,6 +7,9 @@ function LogIn(props) {
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
 
+    window.history.pushState(null,null,window.location.href);
+        window.onpopstate =window.history.go(1);
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const response = await fetch(`https://jsonplaceholder.typicode.com/users?username=${username}`)

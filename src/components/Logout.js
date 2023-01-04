@@ -8,12 +8,11 @@ export function Logout() {
     const toLogIn = () => {
         window.history.pushState(null,null,window.location.href);
         window.onpopstate =window.history.go(1);
-        setTimeout(() => navigate("/"), 500)
+        navigate("/")
     }
 
     return (
         <>
-            <h1>You Looged out successfuly</h1>
             <>{toLogIn()}</>
         </>
     )

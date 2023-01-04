@@ -3,16 +3,16 @@ import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import '../css/Album.css'
 
-
+const arr = [];
 function Album(props) {
 const [num, setNum] = useState(10);
     let {id} = useParams();
     const albumPhotos = id * 50 - 49;
     const [album, setAlbum] = useState("");  
+    
     useEffect(() => {
-      const arr = [];
       async function data() {
-        for(let i = albumPhotos;i < albumPhotos + num; i++){
+        for(let i = albumPhotos+num-10;i < albumPhotos + num; i++){
           const res = await fetch(
             `https://jsonplaceholder.typicode.com/photos?id=${i}`
           );
@@ -22,10 +22,7 @@ const [num, setNum] = useState(10);
         setAlbum(arr);
       }
       data(id);
-
-      // return(()=>localStorage.setItem("currentUserAlbum", JSON.stringify(album)))
-
-    },[num,props.id]);
+    },[props.id,num]);
     
 
     function updateNum(){
@@ -42,7 +39,7 @@ const [num, setNum] = useState(10);
       ? album.map((el, index) => {
           return (
             <li key={index} className='albums'>
-                <img src={el.url} alt="color"></img>
+                <img src={el.url} alt="color" className="photos"></img>
             </li>
           );
         })
