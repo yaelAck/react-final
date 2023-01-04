@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./Header";
 
-function Album(props) {
+function Albums(props) {
   const [useralbums, setUserAlbums] = useState([]);
   const navigate = useNavigate();
   const refAlbums = useRef('')
+  
   useEffect(() => {
     if (localStorage.getItem('currentUserAlbums') !== null) {
       setUserAlbums(JSON.parse(localStorage.getItem('currentUserAlbums')))
@@ -49,4 +50,4 @@ function Album(props) {
 
 }
 
-export default Album;
+export default Albums;
