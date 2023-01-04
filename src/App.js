@@ -25,7 +25,7 @@ if(localStorage.getItem('currentUser') !== null){
 setUserId(JSON.parse(localStorage.getItem('currentUser')).id)
 setUserName(JSON.parse(localStorage.getItem('currentUser')).username)
 }
- },[])
+ },[userId])
 
   return (
     <div>

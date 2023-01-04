@@ -8,12 +8,16 @@ export function Home(props) {
     const [userName,setUserName] = useState('');
     useEffect(() => {
         setUserName(props.userName)
+
+        
+
     },[props.id,props.userName])
+    console.log(userName)
   
     return (
         <>
              <Header id={props.id}/>
-            <h1> Hello,{userName}</h1>
+            <h1> Hello,{userName?userName:null}</h1>
         </>
     )
 }
