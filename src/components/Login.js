@@ -13,6 +13,7 @@ function LogIn(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        localStorage.clear();
         const response = await fetch(`https://jsonplaceholder.typicode.com/users?username=${username}`)
         const data = await response.json();
         const item = (data[0])
