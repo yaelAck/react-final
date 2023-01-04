@@ -12,7 +12,7 @@ li {
     gap: 10px;
 }
 
-.photos{
+#photos{
     width: 65px;
     display: block;
     border: 1px solid black;
