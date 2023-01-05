@@ -31,7 +31,7 @@ function Albums(props) {
       <Header id={props.id} />
       <ul>
         {useralbums?.map((el, index) =>
-          <li onClick={() => showAlbum(index)} key={index} className='albums-li'>
+          <li onClick={() => showAlbum(index)} key={Math.random()} className='albums-li'>
             <h4>{el.title}</h4>
           </li>)}
       </ul>

@@ -3,7 +3,7 @@ import "../css/Tasks.css";
 
 function userTasks(props) {
     return (
-        <li className="to-do-list" key={props.index} style={props.el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
+        <li className="to-do-list" key={Math.random()} style={props.el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
             <p>id: {props.el.id}</p>
             {!props.el.completed ? (
                 <div>

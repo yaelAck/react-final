@@ -48,8 +48,8 @@ function Album(props) {
   }
 
   const mapalbum = album.map((el, index) =>
-    <li key={index} id="albums-li">
-      <img src={el.url} alt="color" id="albums-photos"></img>
+    <li key={Math.random()} id="album-li">
+      <img src={el.url} alt="color" id="album-photos"></img>
     </li>)
 
   return (
@@ -58,7 +58,7 @@ function Album(props) {
       <div id="album-div">
         <ul> {mapalbum} </ul>
         <p className="album-p">{flag && num ? "Loading..." : ""}</p>
-        <div><button id="albums-button" onClick={updateNum}>more photos</button></div>
+        <div><button id="album-button" onClick={updateNum}>more photos</button></div>
         <p className="album-p">{!num ? "There is no more photos" : ""}</p>
       </div>
     </div>);

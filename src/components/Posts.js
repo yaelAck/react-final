@@ -25,7 +25,7 @@ function Posts(props) {
   }
 
   const mapPosts = userposts.map((el, index) =>
-    <li onClick={() => showPost(index)} key={index} className='posts'>
+    <li onClick={() => showPost(index)} key={Math.random()} className='posts'>
       <h4>{el.title}</h4>
     </li>
   )
