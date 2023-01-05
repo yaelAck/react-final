@@ -1,13 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function Logout() {
-    localStorage.clear();
+export function Logout(){
     const navigate = useNavigate()
 
     const toLogIn = () => {
         localStorage.clear();
-        localStorage.removeItem('currentUerToDo')
         window.history.pushState(null, null, window.location.href);
         window.onpopstate = window.history.go(1);
         setTimeout(() => navigate("/"), 700)

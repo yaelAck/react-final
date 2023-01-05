@@ -6,7 +6,7 @@ function Header(props) {
     const user = props.id;
     const id = user;
     return (
-        <div>
+        <div id='header-div'>
             <ul>
                 <li className='header'><NavLink to={`/user/${id}/home`}>Home</NavLink></li>
                 <li className='header'><NavLink to={`/user/${id}/info`}>Info</NavLink></li>
