@@ -12,8 +12,9 @@ export function Home(props) {
     return (
         <>
             <Header id={props.id} />
-            <h1 className='home'> Hello,{userName}</h1>
+            <h1 className='home home-h1'> Hello {userName}</h1>
             <h3 className='home'>Welcome to your profile</h3>
+            <hr/>
         </>
     )
 }
