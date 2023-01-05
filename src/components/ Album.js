@@ -8,26 +8,41 @@ function Album(props) {
   let { id } = useParams();
   const albumPhotos = id * 50 - 49;
   const [album, setAlbum] = useState([]);
+  const [flag, setFlag] = useState(false)
 
   useEffect(() => {
-    const arr = [];
-    async function data() {
-      for (let i = albumPhotos + num - 10; i < albumPhotos + num; i++) {
-        const res = await fetch(
-          `https://jsonplaceholder.typicode.com/photos?id=${i}`
-        );
-        const serverData = await res.json();
-        arr.push(serverData[0])
-      }
-      setAlbum((prev) => prev.concat(arr));
+    if (localStorage.getItem(`album${id}`)) {
+      setAlbum(JSON.parse(localStorage.getItem(`album${id}`)))
     }
-    data(id);
+    else {
+      const arr = [];
+      async function data() {
+        for (let i = albumPhotos + num - 10; i < albumPhotos + num; i++) {
+          setFlag(true)
+          const res = await fetch(
+            `https://jsonplaceholder.typicode.com/photos?id=${i}`
+          );
+          const serverData = await res.json();
+          arr.push(serverData[0])
+          setFlag(false)
+
+        }
+        setAlbum((prev) => prev.concat(arr));
+      }
+      data();
+     
+    }
+
   }, [num]);
 
   function updateNum() {
+    setFlag(true)
     setNum((prev) => {
       if (prev < 50) {
         return prev + 10;
+      }
+      else {
+        localStorage.setItem(`album${id}`, JSON.stringify(album))
       }
     })
   }
@@ -41,10 +56,10 @@ function Album(props) {
     <div onScroll={updateNum}>
       <Header id={props.id} />
       <div id="album-div">
-        {mapalbum}
-        <p className="album-p">{album.length === 0? "Loading..." : ""}</p>
+        <ul> {mapalbum} </ul>
+        <p className="album-p">{flag && num ? "Loading..." : ""}</p>
         <div><button id="albums-button" onClick={updateNum}>more photos</button></div>
-        <p className="album-p">{!num ? "you saw all the photos" : ""}</p>
+        <p className="album-p">{!num ? "There is no more photos" : ""}</p>
       </div>
     </div>);
 }

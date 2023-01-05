@@ -25,9 +25,9 @@ function Post(props) {
   }
 
   async function showComments(id) {
-    const a = await checkLocalStorage(`comments${id}`, `https://jsonplaceholder.typicode.com/comments?postId=${id}`)
-    localStorage.setItem(`comments${id}`, JSON.stringify(a))
-    setComments(a);
+    const getComments = await checkLocalStorage(`comments${id}`, `https://jsonplaceholder.typicode.com/comments?postId=${id}`)
+    localStorage.setItem(`comments${id}`, JSON.stringify(getComments))
+    setComments(getComments);
   }
 
   return (

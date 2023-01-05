@@ -13,8 +13,9 @@ function Albums(props) {
     window.onbeforeunload=()=>localStorage.setItem("currentUserAlbums", JSON.stringify(refAlbums.current))
     async function getAlbums() {
       const userAlbums = await checkLocalStorage('currentUserAlbums', `https://jsonplaceholder.typicode.com/albums?userId=${props.id}`)
+      userAlbums.sort((a,b)=>a.title.localeCompare(b.title));
       setUserAlbums(userAlbums)
-      refAlbums.current = userAlbums
+      refAlbums.current = userAlbums;
     }
     getAlbums()
 

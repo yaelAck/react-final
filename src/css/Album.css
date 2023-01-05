@@ -7,13 +7,13 @@ li {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 1150px;
+    width: 1250px;
     margin: auto;
     gap: 10px;
 }
 
 #albums-photos{
-    width: 65px;
+    width: 60px;
     display: block;
     border: 1px solid black;
     padding: 18px;
@@ -36,6 +36,7 @@ li {
 }
 
 .album-p{
-    width: 40px;
+    width: 140px;
     margin-bottom: 60px;
+    text-align: center;
 }
