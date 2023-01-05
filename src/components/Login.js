@@ -7,6 +7,7 @@ function LogIn(props) {
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
 
+    localStorage.clear();
     //enable going back in history
     window.history.pushState(null, null, window.location.href);
     window.onpopstate = window.history.go(1);
