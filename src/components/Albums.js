@@ -8,6 +8,7 @@ function Albums(props) {
   const refAlbums = useRef('')
 
   useEffect(() => {
+    window.onbeforeunload=()=>localStorage.setItem("currentUserAlbums", JSON.stringify(refAlbums.current))
     if (localStorage.getItem('currentUserAlbums') !== null) {
       setUserAlbums(JSON.parse(localStorage.getItem('currentUserAlbums')))
       refAlbums.current = JSON.parse(localStorage.getItem('currentUserAlbums'))

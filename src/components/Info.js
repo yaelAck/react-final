@@ -7,6 +7,7 @@ function Info(props) {
   const refInfo = useRef('')
 
   useEffect(() => {
+    window.onbeforeunload=()=>localStorage.setItem("currentUserInfo", JSON.stringify(refInfo.current))
     if (localStorage.getItem('currentUserInfo') !== null) {
       setUser(JSON.parse(localStorage.getItem('currentUserInfo')))
       refInfo.current = JSON.parse(localStorage.getItem('currentUserInfo'))

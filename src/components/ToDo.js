@@ -8,6 +8,7 @@ function ToDo(props) {
   const refToDo = useRef('')
 
   useEffect(() => {
+    window.onbeforeunload=()=>localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current))
     if (localStorage.getItem('currentUerToDo') !== null) {
       setUserToDo(JSON.parse(localStorage.getItem('currentUerToDo')))
       refToDo.current = JSON.parse(localStorage.getItem('currentUerToDo'))
@@ -17,13 +18,13 @@ function ToDo(props) {
       async function data(id) {
         const res = await fetch(
           `https://jsonplaceholder.typicode.com/todos?userId=${id}`
-        );
-        const serverData = await res.json();
-        setUserToDo(serverData);
-        refToDo.current = serverData;
+          );
+          const serverData = await res.json();
+          setUserToDo(serverData);
+          refToDo.current = serverData;
+        }
+        data(props.id);
       }
-      data(props.id);
-    }
     return (() => localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current)))
   }, [props.id]);
 
@@ -36,6 +37,7 @@ function ToDo(props) {
     tempUserToDo[index].completed = tempUserToDo[index].completed ? false : true;
     setUserToDo(tempUserToDo)
     refToDo.current = tempUserToDo;
+    // localStorage.setItem("currentUerToDo", JSON.stringify(tempUserToDo))
   }
 
   const sortByComplited = () => {

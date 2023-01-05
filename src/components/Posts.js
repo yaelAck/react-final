@@ -6,9 +6,10 @@ import "../css/Posts.css"
 function Posts(props) {
   const [userposts, setUserPosts] = useState([]);
   const navigate = useNavigate()
-  const refPosts = useRef('')
+  const refPosts = useRef([])
 
   useEffect(() => {
+    window.onbeforeunload=()=>localStorage.setItem("currentUserPosts", JSON.stringify(refPosts.current))
     if (localStorage.getItem('currentUserPosts') !== null) {
       setUserPosts(JSON.parse(localStorage.getItem('currentUserPosts')))
       refPosts.current = JSON.parse(localStorage.getItem('currentUserPosts'))
