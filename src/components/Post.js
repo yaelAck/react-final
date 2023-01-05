@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import checkLocalStorage from "./CheckLocalStorage";
 import Header from "./Header";
 import '../css/post.css'
-import checkLocalStorage from "./useLocalStorage";
 
 function Post(props) {
   let { id } = useParams();
@@ -43,8 +43,7 @@ function Post(props) {
               <h4 className="h4">{el.name}</h4>
               <h5 className="h5">{el.body}</h5>
               <button onClick={() => deleteComment(index, post.id)}>Delete comment</button>
-            </li>
-          );
+            </li>);
         })}
       </div>
     </div>

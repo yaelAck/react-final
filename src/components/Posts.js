@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import checkLocalStorage from "./useLocalStorage";
+import checkLocalStorage from "./CheckLocalStorage";
 import Header from "./Header";
 import "../css/Posts.css"
 

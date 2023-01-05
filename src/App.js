@@ -39,7 +39,7 @@ function App() {
           <Route path="posts/:id" element={<Post id={userId} />}></Route>
           <Route path="albums" element={<Albums id={userId} />}></Route>
           <Route path="albums/:id" element={<Album id={userId} />}></Route>
-          <Route path="*"></Route>
+          <Route path="*" element={<Home id={userId} userName={userName} />}></Route>
         </Route>
       </Route>
     </Routes>

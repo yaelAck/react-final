@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
+import checkLocalStorage from './CheckLocalStorage';
 import Header from './Header';
-import checkLocalStorage from './useLocalStorage';
 import '../css/Info.css'
 
 function Info(props) {

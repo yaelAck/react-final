@@ -42,7 +42,7 @@ function LogIn(props) {
                 <h1>Login</h1>
                 <form onSubmit={handleSubmit}>
                     <input className="LoginInput" type="text" value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
-                    <input className="LoginInput" type="text" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                    <input className="LoginInput" type="password" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                     <button className="Loginbutton" type="submit">login</ button>
                     <p>{flag ? "One or more of the details are incorrect" : ""}</p>
                 </form>

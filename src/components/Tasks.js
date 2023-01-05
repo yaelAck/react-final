@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import UserTasks from './UserTasks'
-import checkLocalStorage from "./useLocalStorage";
+import checkLocalStorage from "./CheckLocalStorage";
 import Header from "./Header";
 import "../css/Tasks.css";
 
@@ -27,15 +27,13 @@ function Tasks(props) {
     tempUserTasks[index].completed = tempUserTasks[index].completed ? false : true;
     setUserTasks(tempUserTasks)
     refTasks.current = tempUserTasks;
-    // localStorage.setItem("currentUerTasks", JSON.stringify(tempUserTasks))
   }
 
   const sortByComplited = () => {
     const tempUserTasks = [...userTasks];
     tempUserTasks.sort((a, b) => {
       if (a.completed) { return 1; }
-      return -1;
-    });
+      return -1;});
     setUserTasks(tempUserTasks);
   };
 
