@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import "../css/Login.css"
 
 function LogIn(props) {
-    const [username, setUsername] = useState("Bret")
-    const [password, setPassword] = useState("3159")
+    const [username, setUsername] = useState("Antonette")
+    const [password, setPassword] = useState("9509")
     const [flag, setFlag] = useState(false)
     const navigate = useNavigate();
 

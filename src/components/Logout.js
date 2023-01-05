@@ -13,7 +13,7 @@ export function Logout(){
 
     return (
         <>
-            <h1>You Looged out successfuly</h1>
+            <h1>You logged out successfully</h1>
             <>{toLogIn()}</>
         </>
     )

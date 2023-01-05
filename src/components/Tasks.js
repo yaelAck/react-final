@@ -19,9 +19,8 @@ function Tasks(props) {
     return (() => localStorage.setItem("currentUserTasks", JSON.stringify(refTasks.current)))
   }, [props.id]);
 
-  let mapTasks = userTasks.map((el, index) =>
-    <UserTasks el={el} index={index} changeElComplete={() => changeElComplete(index)} />
-  )
+  let mapTasks = userTasks?.map((el, index) =>
+    <UserTasks el={el} index={index} changeElComplete={() => changeElComplete(index)} />)
 
   const changeElComplete = (index) => {
     const tempUserTasks = [...userTasks];
