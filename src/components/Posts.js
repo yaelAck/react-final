@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import checkLocalStorage from "./useLocalStorage";
 import Header from "./Header";
 import "../css/Posts.css"
 
@@ -10,23 +11,13 @@ function Posts(props) {
 
   useEffect(() => {
     window.onbeforeunload=()=>localStorage.setItem("currentUserPosts", JSON.stringify(refPosts.current))
-    if (localStorage.getItem('currentUserPosts') !== null) {
-      setUserPosts(JSON.parse(localStorage.getItem('currentUserPosts')))
-      refPosts.current = JSON.parse(localStorage.getItem('currentUserPosts'))
-      console.log("enter to local storage posts")
+    async function getPosts() {
+      const userPosts = await checkLocalStorage('currentUserPosts', `https://jsonplaceholder.typicode.com/posts?userId=${props.id}`)
+      setUserPosts(userPosts)
+      refPosts.current = userPosts
+      console.log(userPosts)
     }
-    else {
-      async function data(id) {
-        const res = await fetch(
-          `https://jsonplaceholder.typicode.com/posts?userId=${id}`
-        );
-        const serverData = await res.json();
-        setUserPosts(serverData);
-        refPosts.current = serverData;
-        console.log(props);
-      }
-      data(props.id);
-    }
+    getPosts()
     return (() => localStorage.setItem("currentUserPosts", JSON.stringify(refPosts.current)))
   }, [props.id]);
 

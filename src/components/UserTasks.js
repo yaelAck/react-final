@@ -1,7 +1,7 @@
 import React from 'react';
-import "../css/ToDo.css";
+import "../css/Tasks.css";
 
-function userToDo(props) {
+function userTasks(props) {
     return (
         <li className="to-do-list" key={props.index} style={props.el.completed ? { backgroundColor: "rgb(10, 227, 10)" } : null}>
             <p>id: {props.el.id}</p>
@@ -14,4 +14,4 @@ function userToDo(props) {
         </li>
     )
 }
-export default userToDo;
+export default userTasks;

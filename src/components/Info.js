@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Header from './Header';
+import checkLocalStorage from './useLocalStorage';
 import '../css/Info.css'
 
 function Info(props) {
@@ -7,24 +8,14 @@ function Info(props) {
   const refInfo = useRef('')
 
   useEffect(() => {
-    window.onbeforeunload=()=>localStorage.setItem("currentUserInfo", JSON.stringify(refInfo.current))
-    if (localStorage.getItem('currentUserInfo') !== null) {
-      setUser(JSON.parse(localStorage.getItem('currentUserInfo')))
-      refInfo.current = JSON.parse(localStorage.getItem('currentUserInfo'))
-      console.log("enter to local storage info")
+    async function getInfo() {
+      let userInfo = await checkLocalStorage('currentUser', `https://jsonplaceholder.typicode.com/users?id=${props.id}`)
+      setUser(userInfo)
+      refInfo.current = userInfo
+      console.log(userInfo)
     }
-    else {
-      async function data(id) {
-        const res = await fetch(
-          `https://jsonplaceholder.typicode.com/users?id=${id}`
-        );
-        const serverData = await res.json();
-        setUser(serverData[0]);
-        refInfo.current = serverData[0];
-      }
-      data(props.id);
-    }
-    return () => localStorage.setItem("currentUserInfo", JSON.stringify(refInfo.current))
+    getInfo()
+
   }, [props.id]);
   const address = `${user?.address?.city}, ${user?.address?.street},  ${user?.address?.zipcode} `;
 

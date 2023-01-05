@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import checkLocalStorage from "./useLocalStorage";
 import Header from "./Header";
 import '../css/Albums.css'
 
@@ -10,24 +11,14 @@ function Albums(props) {
 
   useEffect(() => {
     window.onbeforeunload=()=>localStorage.setItem("currentUserAlbums", JSON.stringify(refAlbums.current))
-    if (localStorage.getItem('currentUserAlbums') !== null) {
-      setUserAlbums(JSON.parse(localStorage.getItem('currentUserAlbums')))
-      refAlbums.current = JSON.parse(localStorage.getItem('currentUserAlbums'))
-      console.log("enter to local storage albums")
+    async function getAlbums() {
+      const userAlbums = await checkLocalStorage('currentUserAlbums', `https://jsonplaceholder.typicode.com/albums?userId=${props.id}`)
+      setUserAlbums(userAlbums)
+      refAlbums.current = userAlbums
+      console.log(userAlbums)
     }
-    else {
-      async function data(id) {
-        const res = await fetch(
-          `https://jsonplaceholder.typicode.com/albums?userId=${id}`
-        );
-        const serverData = await res.json();
-        serverData.sort((a, b) => a.title.localeCompare(b.title));
-        console.log(serverData)
-        setUserAlbums(serverData);
-        refAlbums.current = serverData;
-      }
-      data(props.id);
-    }
+    getAlbums()
+
     return () => localStorage.setItem("currentUserAlbums", JSON.stringify(refAlbums.current))
   }, [props.id]);
 
@@ -40,7 +31,7 @@ function Albums(props) {
     <div>
       <Header id={props.id} />
       <ul>
-        {useralbums.map((el, index) =>
+        {useralbums?.map((el, index) =>
           <li onClick={() => showAlbum(index)} key={index} className='albums-li'>
             <h4>{el.title}</h4>
           </li>)}

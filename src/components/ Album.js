@@ -42,8 +42,9 @@ function Album(props) {
       <Header id={props.id} />
       <div id="album-div">
         {mapalbum}
-        <button id="albums-button" onClick={updateNum}>more photos</button>
-        <p id="albums-p">{!num ? "you saw all the photos" : ""}</p>
+        <p className="album-p">{album.length === 0? "Loading..." : ""}</p>
+        <div><button id="albums-button" onClick={updateNum}>more photos</button></div>
+        <p className="album-p">{!num ? "you saw all the photos" : ""}</p>
       </div>
     </div>);
 }

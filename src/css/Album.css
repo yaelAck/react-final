@@ -32,8 +32,10 @@ li {
 
 #albums-button{
     margin-top: 2rem;
+    margin-top: 50px;
 }
 
-#albums-p{
-    margin-top: 3rem;
+.album-p{
+    width: 40px;
+    margin-bottom: 60px;
 }

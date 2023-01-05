@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import "../css/Login.css"
 
 function LogIn(props) {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("Bret")
+    const [password, setPassword] = useState("3159")
+    const [flag, setFlag] = useState(false)
     const navigate = useNavigate();
 
     localStorage.clear();
@@ -18,8 +19,8 @@ function LogIn(props) {
         const data = await response.json();
         const item = (data[0])
 
-        if (!item) {
-            alert("incorrect username")
+        if (!item) { //username incorrect
+            setFlag(true)
             return
         }
         let notPassword = item.address.geo.lat
@@ -30,8 +31,8 @@ function LogIn(props) {
             props.setUserId(item.id);
             navigate(`user/${item.id}/home`, { state: username });
         }
-        else {
-            alert("incorrect password")
+        else { //password incorrect
+            setFlag(true)
         }
     }
 
@@ -43,6 +44,7 @@ function LogIn(props) {
                     <input className="LoginInput" type="text" value={username} placeholder="username" onChange={(e) => setUsername(e.target.value)} />
                     <input className="LoginInput" type="text" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
                     <button className="Loginbutton" type="submit">login</ button>
+                    <p>{flag ? "One or more of the details are incorrect" : ""}</p>
                 </form>
             </div>
         </div>
