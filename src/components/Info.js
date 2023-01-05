@@ -12,7 +12,6 @@ function Info(props) {
       let userInfo = await checkLocalStorage('currentUser', `https://jsonplaceholder.typicode.com/users?id=${props.id}`)
       setUser(userInfo)
       refInfo.current = userInfo
-      console.log(userInfo)
     }
     getInfo()
 

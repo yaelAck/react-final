@@ -15,7 +15,6 @@ function Albums(props) {
       const userAlbums = await checkLocalStorage('currentUserAlbums', `https://jsonplaceholder.typicode.com/albums?userId=${props.id}`)
       setUserAlbums(userAlbums)
       refAlbums.current = userAlbums
-      console.log(userAlbums)
     }
     getAlbums()
 
@@ -23,7 +22,6 @@ function Albums(props) {
   }, [props.id]);
 
   function showAlbum(index) {
-    console.log(useralbums[index])
     navigate(`${useralbums[index].id}`)
   }
 

@@ -14,7 +14,6 @@ function Tasks(props) {
       const userTasks = await checkLocalStorage('currentUserTasks', `https://jsonplaceholder.typicode.com/todos?userId=${props.id}`)
       setUserTasks(userTasks)
       refTasks.current = userTasks
-      console.log(userTasks)
     }
     getTasks()
     return (() => localStorage.setItem("currentUserTasks", JSON.stringify(refTasks.current)))

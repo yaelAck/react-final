@@ -15,14 +15,12 @@ function Posts(props) {
       const userPosts = await checkLocalStorage('currentUserPosts', `https://jsonplaceholder.typicode.com/posts?userId=${props.id}`)
       setUserPosts(userPosts)
       refPosts.current = userPosts
-      console.log(userPosts)
     }
     getPosts()
     return (() => localStorage.setItem("currentUserPosts", JSON.stringify(refPosts.current)))
   }, [props.id]);
 
   function showPost(index) {
-    console.log(userposts[index])
     navigate(`${userposts[index].id}`)
   }
 

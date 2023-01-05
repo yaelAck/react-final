@@ -6,7 +6,6 @@ import checkLocalStorage from "./useLocalStorage";
 
 function Post(props) {
   let { id } = useParams();
-  console.log(id)
   const [post, setPost] = useState("");
   const [comments, setComments] = useState([]);
 

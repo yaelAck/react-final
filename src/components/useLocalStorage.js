@@ -29,10 +29,8 @@ function checkLocalStorage(key, url) {
         async function data() {
           const res = await fetch(url);
           const serverData = await res.json();   
-          console.log(serverData[0])
           return serverData   
          }
-        //  console.log(data())
          return data()
       }
   }
