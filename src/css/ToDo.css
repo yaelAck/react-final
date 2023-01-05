@@ -28,9 +28,10 @@ input[type="checkbox"]:checked{
 .to-button{
     margin-top: 10px;
     margin-left: 20px;
-    width: 100px;
+    width: 140px;
     display: inline;
     background-color: rgb(104, 234, 189);
+    color: black;
 }
 
 #to-div{

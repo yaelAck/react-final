@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Header from "./Header";
+import '../css/Albums.css'
 
 function Albums(props) {
   const [useralbums, setUserAlbums] = useState([]);
@@ -40,7 +41,7 @@ function Albums(props) {
       <Header id={props.id} />
       <ul>
         {useralbums.map((el, index) =>
-          <li onClick={() => showAlbum(index)} key={index} className='posts'>
+          <li onClick={() => showAlbum(index)} key={index} className='albums-li'>
             <h4>{el.title}</h4>
           </li>)}
       </ul>

@@ -27,7 +27,7 @@ function Post(props) {
     const serverData = await res.json();
     const comments = serverData.map((el, index) => {
       return (
-        <li key={index}>
+        <li className="comment" key={index}>
           <h4 className="h4">{el.name}</h4>
           <h5 className="h5">{el.body}</h5>
         </li>
@@ -39,7 +39,7 @@ function Post(props) {
   return (
     <div>
       <Header />
-      <div id="photos-div">
+      <div id="post-div">
         <h1 id="h1">{post.title}</h1>
         <h2 id="h2">{post.body}</h2>
         <button onClick={() => show(post.id)}>show comments</button>

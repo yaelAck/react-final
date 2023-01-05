@@ -1,4 +1,4 @@
-.posts{
+.albums-li{
     margin-right: 40px;
     margin-top: 10px;
     height: 80px;
@@ -6,6 +6,9 @@
     padding: 10px;
     border:2px solid black;
     width: 500px;
-    background-color: rgb(243, 105, 103);
+    background-color: rgb(255, 210, 120);
     box-shadow: 3px 4px rgb(159, 142, 142);
 }
+
+
+ 

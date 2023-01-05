@@ -1,4 +1,4 @@
-.photos{
+.comment{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,9 +10,10 @@
     border-radius:12px;
     margin-top: 10px;
     box-shadow: 3px 4px rgb(169, 164, 164);
+    background-color:  rgba(1, 22, 255, 0.187);
 }
 
-#photos-div{
+#post-div{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,8 +30,11 @@
 button{
     padding: 5px;
     border-radius: 6px;
-    background-color: rgb(192, 150, 233);
+    background-color: rgba(1, 22, 255, 0.704);
     font-size: 18px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 button:hover{
