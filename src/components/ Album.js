@@ -30,9 +30,7 @@ function Album(props) {
         setAlbum((prev) => prev.concat(arr));
       }
       data();
-     
     }
-
   }, [num]);
 
   function updateNum() {

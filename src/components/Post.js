@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import checkLocalStorage from "./CheckLocalStorage";
 import Header from "./Header";
 import '../css/post.css'
-import checkLocalStorage from "./CheckLocalStorage";
 
 function Post(props) {
   let { id } = useParams();
