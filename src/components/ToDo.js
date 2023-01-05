@@ -6,6 +6,7 @@ import "../css/ToDo.css";
 function ToDo(props) {
   const [userToDo, setUserToDo] = useState([]);
   const refToDo = useRef('')
+  
 
   useEffect(() => {
     window.onbeforeunload=()=>localStorage.setItem("currentUerToDo", JSON.stringify(refToDo.current))

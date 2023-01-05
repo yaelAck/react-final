@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from "./Header";
+import "../css/Home.css"
 
 export function Home(props) {
     const [userName, setUserName] = useState([]);
@@ -11,7 +12,8 @@ export function Home(props) {
     return (
         <>
             <Header id={props.id} />
-            <h1> Hello,{userName}</h1>
+            <h1 className='home'> Hello,{userName}</h1>
+            <h3 className='home'>Welcome to your profile</h3>
         </>
     )
 }

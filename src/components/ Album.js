@@ -8,7 +8,6 @@ function Album(props) {
   let { id } = useParams();
   const albumPhotos = id * 50 - 49;
   const [album, setAlbum] = useState([]);
-  // window.addEventListener('scroll', ()=>(console.log(window.scrollY)))
 
   useEffect(() => {
     const arr = [];
